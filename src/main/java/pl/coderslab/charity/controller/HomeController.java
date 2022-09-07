@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Institution;
+import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 
 import java.util.List;
@@ -13,15 +14,23 @@ import java.util.List;
 public class HomeController {
 
     private final InstitutionService institutionService;
+    private final DonationService donationService;
 
-    public HomeController(InstitutionService institutionService) {
+    public HomeController(InstitutionService institutionService, DonationService donationService) {
         this.institutionService = institutionService;
+        this.donationService = donationService;
     }
 
     @RequestMapping("/")
     public String homeAction(Model model){
         List<Institution> listInstitution = institutionService.findAllInstitution();
+        int sumAllQuantity = donationService.sumAllQuantity();
+        int sumAllDonation = donationService.sumAllDonation();
+
+        model.addAttribute("sumQuantity", sumAllQuantity);
+        model.addAttribute("sumDonation", sumAllDonation);
         model.addAttribute("listInstitution", listInstitution);
+
         return "index";
     }
 }
