@@ -1,6 +1,9 @@
 package pl.coderslab.charity.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,6 +13,8 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Donation {
 
     @Id
@@ -19,9 +24,9 @@ public class Donation {
     private Integer quantity;
 
     @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Category> categoryList = new ArrayList<>();;
+    private List<Category> categoryList = new ArrayList<>();
 
-    @OneToOne
+    @ManyToOne
     private Institution institution;
 
     private String street;
@@ -36,19 +41,4 @@ public class Donation {
 
     private String pickUpComment;
 
-    public Donation(Long id, Integer quantity, List<Category> categoryList, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
-        Id = id;
-        this.quantity = quantity;
-        this.categoryList = categoryList;
-        this.institution = institution;
-        this.street = street;
-        this.city = city;
-        this.zipCode = zipCode;
-        this.pickUpDate = pickUpDate;
-        this.pickUpTime = pickUpTime;
-        this.pickUpComment = pickUpComment;
-    }
-
-    public Donation() {
-    }
 }

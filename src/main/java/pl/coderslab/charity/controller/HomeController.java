@@ -22,8 +22,8 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String homeAction(Model model){
-        List<Institution> listInstitution = institutionService.findAllInstitution();
+    public String indexAction(Model model){
+        List<Institution> listInstitution = institutionService.findInstitution();
         int sumAllQuantity = donationService.sumAllQuantity();
         int sumAllDonation = donationService.sumAllDonation();
 

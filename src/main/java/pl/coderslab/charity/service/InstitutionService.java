@@ -16,5 +16,13 @@ public class InstitutionService {
         this.institutionRepository = institutionRepository;
     }
 
-    public List<Institution> findAllInstitution(){ return (List<Institution>) institutionRepository.findAll();}
+    public List<Institution> findInstitution(){
+        List<Institution> institutionList = (List<Institution>) institutionRepository.findAll();
+        if (institutionList.size()<=3){
+            for (int i=0;i<=6-institutionList.size();i++){
+                institutionList.add(new Institution());
+            }
+        }
+        return institutionList;
+    }
 }

@@ -3,6 +3,8 @@ package pl.coderslab.charity.service;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.repository.DonationRepository;
 
+import java.util.Optional;
+
 @Service
 public class DonationService {
     private final DonationRepository donationRepository;
@@ -12,17 +14,13 @@ public class DonationService {
     }
 
     public int sumAllQuantity(){
-        if (donationRepository.sumQuantity() != null){
-            return donationRepository.sumQuantity();
-        }
-        else { return 0; }
+        Optional<Integer> sumQuantity = donationRepository.sumQuantity();
+        return sumQuantity.orElse(0);
     }
 
     public int sumAllDonation(){
-        if (donationRepository.sumDonation() != null){
-            return donationRepository.sumDonation();
-        }
-        else { return 0; }
+        Optional<Integer> sumDonation = donationRepository.sumDonation();
+        return sumDonation.orElse(0);
     }
 
 }
