@@ -597,30 +597,6 @@ form .form-group--checkbox label {
           align-items: center;
 }
 
-/* line 58, scss/modules/_forms.scss */
-form .form-group--checkbox input {
-  position: absolute;
-  opacity: 0;
-  display: none;
-}
-
-/* line 64, scss/modules/_forms.scss */
-form .form-group--checkbox input:checked + .checkbox {
-  background-color: #f9c910;
-}
-
-/* line 70, scss/modules/_forms.scss */
-form .form-group--checkbox .checkbox {
-  padding: 14px;
-  border: 1px solid #3c3c3c;
-  display: block;
-  position: relative;
-  -webkit-transition: background 0.2s ease-in-out;
-  -o-transition: background 0.2s ease-in-out;
-  transition: background 0.2s ease-in-out;
-  cursor: pointer;
-}
-
 /* line 78, scss/modules/_forms.scss */
 form .form-group--checkbox .checkbox:not(:empty) {
   padding: 6px 10px;
