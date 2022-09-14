@@ -13,8 +13,10 @@
     <header class="header--main-page">
         <nav class="container container--70">
             <ul class="nav--actions">
-                <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
-                <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+                <li><a th:href="@{/login}" class="btn btn--small btn--without-border" sec:authorize="!isAuthenticated()">Zaloguj</a></li>
+                <li><a th:href="@{/register}" class="btn btn--small btn--highlighted" sec:authorize="!isAuthenticated()">Załóż konto</a></li>
+                <li><a th:href="@{/logout}" class="btn btn--small btn--without-border" sec:authorize="isAuthenticated()">Wyloguj się</a></li>
+                <li><a th:href="@{/admin}" class="btn btn--small btn--without-border" sec:authorize="hasAnyRole('ADMIN')">Administracja</a></li>
             </ul>
 
             <ul>
@@ -46,9 +48,8 @@
         <div class="bottom-line">
             <span class="bottom-line--copy">Copyright &copy; 2022</span>
             <div class="bottom-line--icons">
-                <a href="#" class="btn btn--small"><img th:src="@{img/icon-facebook.svg}"/></a> <a href="#"
-                                                                                                                           class="btn btn--small"><img
-                    th:src="@{img/icon-instagram.svg}"/></a>
+                <a href="#" class="btn btn--small"><img th:src="@{img/icon-facebook.svg}"/></a>
+                <a href="#" class="btn btn--small"><img th:src="@{img/icon-instagram.svg}"/></a>
             </div>
         </div>
     </footer>
