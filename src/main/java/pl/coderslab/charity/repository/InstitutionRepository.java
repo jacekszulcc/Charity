@@ -8,5 +8,4 @@ import pl.coderslab.charity.entity.Institution;
 @Repository
 public interface InstitutionRepository extends CrudRepository<Institution, Long> {
 
-
 }

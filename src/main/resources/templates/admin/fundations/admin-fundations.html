@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin-layout}">
+<main class="main-content" layout:fragment="content">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Zarządzanie fundacjami</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <a th:href="@{/admin/fundations/add}"><button type="button" class="btn btn-primary">Dodaj fundację</button></a><br/><br/>
+        <table class="table table-bordered table-hover" id="dataTable" style="width:50%">
+          <thead>
+          <tr>
+            <th>Lp</th>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Akcje</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="institution, status: ${institutionList}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${institution.name}"></td>
+            <td th:text="${institution.description}"></td>
+            <td>
+              <a th:href="'/admin/fundations/edit/'+${institution.id}"><button type="button" class="btn btn-primary">Edytuj <i class="bi bi-pencil-fill"></i></button></a>
+              <a th:href="'/admin/fundations/delete/'+${institution.id}" onclick="return confirm('Czy na pewno usunąć?')"><button type="button" class="btn btn-primary">Usuń <i class="bi bi-trash3-fill"></i></button></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

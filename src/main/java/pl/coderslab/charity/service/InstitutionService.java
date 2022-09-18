@@ -6,6 +6,7 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repository.InstitutionRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InstitutionService {
@@ -27,4 +28,12 @@ public class InstitutionService {
     }
 
     public List<Institution> findAll(){ return (List<Institution>) institutionRepository.findAll(); }
+
+    public void saveInstitution(Institution institution){ institutionRepository.save(institution); }
+
+    public void deleteById(Long id){ institutionRepository.deleteById(id); }
+
+    public Optional<Institution> findInstitutionById(Long id){ return institutionRepository.findById(id); }
+
+    public void updateInstitution(Institution institution){ institutionRepository.save(institution); }
 }

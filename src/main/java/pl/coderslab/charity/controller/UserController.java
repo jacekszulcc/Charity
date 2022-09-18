@@ -18,13 +18,11 @@ public class UserController {
 
     @GetMapping("/login")
     public String getLogin(){
-
         return "login";
     }
 
     @PostMapping("/login")
     public String postLogin(){
-
         return "redirect:/";
     }
 

@@ -51,13 +51,6 @@ public class DonationController {
         return "form";
     }
 
-    @ResponseBody
-    @PostMapping("/form")
-    public String postForm(Model model){
-
-        return null;
-    }
-
     @PostMapping("/form-confirm")
     public String postFormConfirm(Model model, DonationDto donationDto){
         model.addAttribute("DonationDto", donationDto);

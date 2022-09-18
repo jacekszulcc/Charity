@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin-layout}">
+<main class="main-content" layout:fragment="content">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Zarządzanie administratorami</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="dataTable" style="width:30%">
+          <thead>
+          <tr>
+            <th>Lp</th>
+            <th>Email</th>
+            <th>Akcje</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="admin, status: ${adminsList}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${admin.email}"></td>
+            <td>
+              <a th:href="'/admin/admins/edit/'+${admin.id}"><button type="button" class="btn btn-primary">Edytuj email <i class="bi bi-pencil-fill"></i></button></a>
+              <a th:href="'/admin/admins/change/'+${admin.id}" onclick="return confirm('Czy na pewno zmienić rolę na USER?')"><button type="button" class="btn btn-primary">Zmień rolę na USER <i class="bi bi-pencil-fill"></i></button></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

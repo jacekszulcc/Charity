@@ -22,28 +22,18 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
     private Integer quantity;
-
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Category> categoryList = new ArrayList<>();
-
     @ManyToOne
     private Institution institution;
-
     private String street;
-
     private String city;
-
     private String zipCode;
-
     private String phone;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-
     private LocalTime pickUpTime;
-
     private String pickUpComment;
 
     public Donation(Integer quantity, List<Category> categoryList, Institution institution, String street, String city, String zipCode, String phone, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {

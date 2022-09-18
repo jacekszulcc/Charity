@@ -22,4 +22,10 @@ public class RegistrationController {
         return "register";
     }
 
+    @PostMapping("/register")
+    public String register(UserRegistrationDto userRegistration) {
+        userService.registerUserWithDefaultRole(userRegistration);
+        return "redirect:/login";
+    }
+
 }

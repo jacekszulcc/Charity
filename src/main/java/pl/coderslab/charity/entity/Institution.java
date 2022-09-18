@@ -16,10 +16,8 @@ public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
     @Column(unique = true)
     private String name;
-
     private String description;
 
 }

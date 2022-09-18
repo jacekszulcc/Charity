@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin-layout}">
+<main class="main-content" layout:fragment="content">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Zarządzanie fundacjami</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive" style="width: 50%">
+        <form th:action="@{/admin/users/edit}" method="post" th:object="${user}">
+          <input type="hidden" th:field="*{id}">
+          <input type="hidden" th:field="*{roles}">
+          <input type="hidden" th:field="*{password}">
+          <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" class="form-control" id="name" th:field="*{email}">
+          </div>
+          <button type="submit" class="btn btn-primary">Edytuj</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

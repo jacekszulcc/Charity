@@ -11,7 +11,9 @@ import pl.coderslab.charity.entity.UserRole;
 import pl.coderslab.charity.repository.UserRepository;
 import pl.coderslab.charity.repository.UserRoleRepository;
 
+import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class UserService {
@@ -42,4 +44,31 @@ public class UserService {
         return userRepository.findByEmail(email)
                 .map(UserCredentialsDtoMapper::map);
     }
+
+    public void changeRoleToAdmin(User user){
+        UserRole adminRole = userRoleRepository.findByName("ADMIN").orElseThrow();
+        UserRole userRole = userRoleRepository.findByName("USER").orElseThrow();
+        user.getRoles().remove(userRole);
+        user.getRoles().add(adminRole);
+        userRepository.save(user);
+    }
+
+    public void changeRoleToUser(User user){
+        UserRole adminRole = userRoleRepository.findByName("ADMIN").orElseThrow();
+        UserRole userRole = userRoleRepository.findByName("USER").orElseThrow();
+        user.getRoles().remove(adminRole);
+        user.getRoles().add(userRole);
+        userRepository.save(user);
+    }
+
+    public Optional<User> findUserById(Long id){ return userRepository.findById(id); }
+
+    public List<User> findUsersByRole(UserRole role){ return userRepository.findUsersByRoles(role);}
+
+    public Optional<UserRole> findByName(String name){ return userRoleRepository.findByName(name);}
+
+    public void deleteUserById(Long id){ userRepository.deleteById(id); }
+
+    public void saveUser(User user){ userRepository.save(user); }
+
 }
